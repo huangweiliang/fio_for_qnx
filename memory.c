@@ -8,11 +8,7 @@
 
 #include "fio.h"
 #ifndef FIO_NO_HAVE_SHM_H
-#if defined(__QNX__)
-#include <sys/mman.h>
-#else
 #include <sys/shm.h>
-#endif
 #endif
 
 void fio_unpin_memory(struct thread_data *td)
