@@ -1,3 +1,11 @@
+Build for QNX
+-------------
+This branch is adding the QNX OS support for fio.
+To compile the code:
+./configure --cc=aarch64-unknown-nto-qnx7.1.0-gcc --disable-shm  --build-static
+make
+
+
 Overview and history
 --------------------
 
