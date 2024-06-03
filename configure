@@ -366,6 +366,8 @@ elif check_define __sun__ ; then
   CFLAGS="$CFLAGS -D_REENTRANT"
 elif check_define _WIN32 ; then
   targetos='CYGWIN'
+elif check_define __QNX__ ; then
+  targetos='QNX'
 else
   targetos=`uname -s`
 fi
@@ -465,6 +467,9 @@ CYGWIN*)
   sched_idle="yes"
   pthread_condattr_setclock="no"
   pthread_affinity="no"
+  ;;
+QNX)
+  LIBS="-lsocket"
   ;;
 esac
 
@@ -630,6 +635,7 @@ echo
 if test "$build_static" = "yes" ; then
   CFLAGS="$CFLAGS -ffunction-sections -fdata-sections"
   LDFLAGS="$LDFLAGS -static -Wl,--gc-sections"
+  output_sym "CONFIG_BUILDSTATIC"
 else
   build_static="no"
 fi

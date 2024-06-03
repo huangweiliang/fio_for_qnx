@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <stdint.h>
 
 #include "../fio.h"
 #include "../optgroup.h"
@@ -18,12 +19,12 @@
 #ifndef EXT4_IOC_MOVE_EXT
 #define EXT4_IOC_MOVE_EXT               _IOWR('f', 15, struct move_extent)
 struct move_extent {
-	__u32 reserved;         /* should be zero */
-	__u32 donor_fd;         /* donor file descriptor */
-	__u64 orig_start;       /* logical start offset in block for orig */
-	__u64 donor_start;      /* logical start offset in block for donor */
-	__u64 len;              /* block length to be moved */
-	__u64 moved_len;        /* moved block length */
+	uint32_t reserved;         /* should be zero */
+	uint32_t donor_fd;         /* donor file descriptor */
+	uint64_t orig_start;       /* logical start offset in block for orig */
+	uint64_t donor_start;      /* logical start offset in block for donor */
+	uint64_t len;              /* block length to be moved */
+	uint64_t moved_len;        /* moved block length */
 };
 #endif
 

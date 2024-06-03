@@ -3,6 +3,7 @@
 #include "oslib/asprintf.h"
 
 #ifndef CONFIG_HAVE_VASPRINTF
+#ifndef CONFIG_BUILDSTATIC
 int vasprintf(char **strp, const char *fmt, va_list ap)
 {
 	va_list ap_copy;
@@ -25,6 +26,7 @@ int vasprintf(char **strp, const char *fmt, va_list ap)
 	*strp = str;
 	return str ? vsnprintf(str, len, fmt, ap) : -1;
 }
+#endif
 #endif
 
 #ifndef CONFIG_HAVE_ASPRINTF
