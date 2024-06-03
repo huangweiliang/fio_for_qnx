@@ -21,10 +21,6 @@
 #include <sys/shm.h>
 #endif
 
-
-
-
-
 #include "parse.h"
 #include "smalloc.h"
 #include "filehash.h"
